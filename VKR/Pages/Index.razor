@@ -7,19 +7,19 @@
 <PageTitle>Онлайн просмотр PDF</PageTitle>
 
 <BlazorInputFile.InputFile OnChange="HandleFileSelected" accept=".pdf" hidden id="fileInput"/>
-<button class="btn btn-primary btn-lg btn-block" @onclick="TriggerFileInput">Select PDF</button>
+<button class="btn btn-primary btn-lg btn-block" @onclick="TriggerFileInput">Выбрать PDF</button>
 
 <table class="table table-bordered" style="margin-top:10px;">
     <thead>
         <tr>
             <th>
-                SL
+                Id
             </th>
             <th>
-                PDF Name
+                Название PDF файла
             </th>
             <th>
-                Action
+                Действие
             </th>
         </tr>
     </thead>
@@ -36,8 +36,8 @@
                         @file.Name
                     </td>
                     <td>
-                        <button @onclick="@(e => ShowOnCurrentPage(@file.FileID))">Текущая страница</button>
-                        <button @onclick="@(e => ShowOnNewTab(@file.FileID))">Новая страница</button>
+                        <button @onclick="@(e => ShowOnCurrentPage(@file.FileID))" class="btn btn-primary btn-sm btn-block">Текущая страница</button>
+                        <button @onclick="@(e => ShowOnNewTab(@file.FileID))" class="btn btn-primary btn-sm btn-block">Новая страница</button>
 
                     </td>
                 </tr>
