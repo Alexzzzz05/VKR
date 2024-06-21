@@ -4,9 +4,10 @@
 @inject VKR.IService.IFileUpload fileUpload;
 @inject IJSRuntime JS
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Онлайн просмотр PDF</PageTitle>
 
-<BlazorInputFile.InputFile OnChange="HandleFileSelected" />
+<BlazorInputFile.InputFile OnChange="HandleFileSelected" accept=".pdf" hidden id="fileInput"/>
+<button class="btn btn-primary btn-lg btn-block" @onclick="TriggerFileInput">Select PDF</button>
 
 <table class="table table-bordered" style="margin-top:10px;">
     <thead>
@@ -51,6 +52,10 @@
 }
 
 @code {
+    private async Task TriggerFileInput()
+    {
+        await JS.InvokeVoidAsync("clickElementById", "fileInput");
+    }
     public FileClass fileClass = new FileClass();
     List<IFileListEntry> files = new List<IFileListEntry>();
     public string pdfName = "";
